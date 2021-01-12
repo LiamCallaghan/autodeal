@@ -3,14 +3,14 @@ import React from 'react'
 class Home extends React.Component {
 
     state = {
-        image: null
+      image: null,
     }
 
     render(){
 
-        return (
-            <div>Game</div>
-        )
+      return (
+        <div>Game</div>
+      )
     }
 }
 
