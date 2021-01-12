@@ -1,7 +1,17 @@
 import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-function App() {
-  return <h1>Hello World</h1>
+import Home from './component/common/Home'
+
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={Home}/>
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
 export default App
