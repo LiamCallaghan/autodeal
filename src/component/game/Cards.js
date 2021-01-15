@@ -2,9 +2,9 @@ import React from 'react'
 
 const Cards = ({ id, suit, value }) => {
     return (
-        <div id={id}>
-            <h2>{suit}</h2>
-            <h2>{value}</h2>
+        <div className='card' id={id}>
+            <p className='suit'>{suit}</p>
+            <p className='value'>{value}</p>
         </div>
     )
 }
