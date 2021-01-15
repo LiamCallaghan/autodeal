@@ -1,23 +1,58 @@
+.deck {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .card {
-    border: 5px dotted black;
-    width: 150px;
-    height: 200px;
-    position: relative;
+  margin: 10px 10px;
+  border: 5px dotted white;
+  width: 150px;
+  height: 200px;
+  position: relative;
 }
 
 .number {
-    margin: 0;
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    color: blueviolet;
+  margin: 0;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  color: blueviolet;
 }
 
 .suit {
-    margin: 0;
-    color: blue;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  margin: 0;
+  color: blue;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+div.Spades {
+  background-color: black;
+  p {
+    color: white;
+  }
+}
+
+div.Clubs {
+  background-color: black;
+  p {
+    color: white;
+  }
+}
+
+div.Hearts {
+  background-color: red;
+  p {
+    color: white;
+  }
+}
+
+div.Diamonds {
+    background-color: red;
+  p {
+    color: white;
+  }
 }
