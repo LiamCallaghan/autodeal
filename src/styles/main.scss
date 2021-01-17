@@ -57,10 +57,6 @@ div.Diamonds {
   }
 }
 
-div.none {
-  display: none;
-}
-
 div.stack {
   display: flex;
   flex-direction: row;
@@ -76,8 +72,34 @@ div.cardBack {
   padding: 5px 10px;
   position: absolute;
   top: 0%;
-  .Spades {
+}
+
+div.cardBack.Spades {
+  top: 0%;
+  left: 0%;
+  }
+
+div.cardBack.Hearts {
+    top: -1%;
+    left: -0.3%;
+  }
+
+div.cardBack.Clubs {
     top: -2%;
     left: 0.7%;
-  }
+}
+
+div.cardBack.Diamonds {
+  top: -2%;
+  left: 0.5%;
+}
+
+div.none {
+  display: none;
+}
+
+.button {
+  margin-top: 2%;
+  padding: 20px;
+  background-color: lightblue;
 }
