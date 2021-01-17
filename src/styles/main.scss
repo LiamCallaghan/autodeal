@@ -56,3 +56,28 @@ div.Diamonds {
     color: white;
   }
 }
+
+div.none {
+  display: none;
+}
+
+div.stack {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  height: 220px;
+}
+
+div.cardBack {
+  background: rgb(0,0,0);
+  background: linear-gradient(132deg, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 50%, rgba(255,0,0,1) 50%);
+  border: 5px solid blue;
+  padding: 5px 10px;
+  position: absolute;
+  top: 0%;
+  .Spades {
+    top: -2%;
+    left: 0.7%;
+  }
+}

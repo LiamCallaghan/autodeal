@@ -22,3 +22,13 @@ export const createDeck = () => {
   deck()
 }
 
+
+export const stackDeck = (deck, stack) => {
+  if (deck.classList.contains('display')) {
+    deck.classList.remove('display')
+    stack.classList.add('display')
+  } else {
+    deck.classList.add('display')
+    stack.classList.remove('display')
+  }
+}
