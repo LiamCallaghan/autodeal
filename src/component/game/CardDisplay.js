@@ -52,9 +52,10 @@ class CardDisplay extends React.Component {
   }
 
   handleClick2 = async () => {
-    function shuffle(list) {
-      for(let j, x, i = list.length; i; j = parseInt(Math.random() * i), x = list[--i], list[i] = list[j], list[j] = x)
-      return list
+    function shuffle(o) {
+      for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x)
+        console.log(o)
+      return o
     }
 
     const response = shuffle(this.state.cards)
@@ -73,8 +74,8 @@ class CardDisplay extends React.Component {
         <div className={'stack ' + this.state.stack}>
           {this.state.cards.map(card => (<CardBacks key={card.id} {...card} />))}
         </div>
-        <div><button className='button' onClick={this.handleClick}>button</button></div>
-        <div><button className='button2' onClick={this.handleClick2}>shuffle</button></div>
+        <div><button className='button' onClick={this.handleClick}>close</button></div>
+        <div><button className='button' onClick={this.handleClick2}>shuffle</button></div>
       </>
     )
   }
