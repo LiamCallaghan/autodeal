@@ -168,6 +168,7 @@ class CardDisplay extends React.Component {
         </div>
         <div><button className='button' onClick={this.handleClick}>close</button></div>
         <div><button className='button' onClick={this.handleClick2}>shuffle</button></div>
+        <div><button className='button' onClick={this.handleClick3}>deal</button></div>
       </>
     )
   }
