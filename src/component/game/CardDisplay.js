@@ -6,6 +6,14 @@ import CardBacks from './CardBacks'
 class CardDisplay extends React.Component {
   state = {
     cards: [],
+    river: [],
+    players: {
+      number: 2,
+      hands: {
+        1: [],
+        2: [],
+      },
+    },
     display: 'display',
     stack: 'none',
   }
@@ -28,6 +36,45 @@ class CardDisplay extends React.Component {
         }
       }
       return cards
+    }
+
+    let handsNumber = this.state.players.number
+    if (handsNumber = 3) {
+      this.setState({
+        players: {
+          number: 3,
+          hands: {
+            1: [],
+            2: [],
+            3: [],
+          }
+        }
+      })
+    } else if (handsNumber = 4) {
+      this.setState({
+        players: {
+          number: 4,
+          hands: {
+            1: [],
+            2: [],
+            3: [],
+            4: [],
+          }
+        }
+      })
+    } else {
+      this.setState({
+        players: {
+          number: 5,
+          hands: {
+            1: [],
+            2: [],
+            3: [],
+            4: [],
+            5: [],
+          }
+        }
+      })
     }
 
     const response = deck()
@@ -62,6 +109,51 @@ class CardDisplay extends React.Component {
     this.setState({
       cards: response,
     })
+  }
+
+  handleClick3 = async () => {
+    function deal(deck, [hand]) {
+      let river = []
+      function addToHand(addTo) {
+        addTo.push(deck[(deck.length - 1)])
+        deck.pop()
+      }
+      function handDeal() {
+        addToHand(hand[0])
+        addToHand(hand[1])
+        if (hand.length != 2) {
+          addToHand(hand[2])
+        }
+        if (hand.length != 3) {
+          addToHand(hand[3])
+        }
+        if (hand.length != 4) {
+          addToHand(hand[4])
+        }
+        if (hand.length != 5) {
+          addToHand(hand[5])
+        }
+      }
+      function riverDeal() {
+        let burn = []
+        let riverHand = []
+        addToHand(burn)
+        addToHand(riverHand)
+        addToHand(riverHand)
+        addToHand(riverHand)
+        addToHand(burn)
+        addToHand(riverHand)
+        addToHand(burn)
+        addToHand(riverHand)
+        river = riverHand
+      }
+      handDeal()
+      handDeal()
+      riverDeal()
+      return [hand, river]
+    }
+    const response = deal(this.state.cards, [...this.state.players.hands])
+    console.log(response)
   }
 
   render() {
