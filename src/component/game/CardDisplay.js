@@ -2,6 +2,8 @@ import React from 'react'
 
 import Cards from './Cards'
 import CardBacks from './CardBacks'
+import Hand from './Hand'
+import River from './River'
 
 class CardDisplay extends React.Component {
   state = {
@@ -38,8 +40,8 @@ class CardDisplay extends React.Component {
       return cards
     }
 
-    let handsNumber = this.state.players.number
-    if (handsNumber = 3) {
+    const handsNumber = this.state.players.number
+    if (handsNumber === 3) {
       this.setState({
         players: {
           number: 3,
@@ -47,10 +49,10 @@ class CardDisplay extends React.Component {
             1: [],
             2: [],
             3: [],
-          }
-        }
+          },
+        },
       })
-    } else if (handsNumber = 4) {
+    } else if (handsNumber === 4) {
       this.setState({
         players: {
           number: 4,
@@ -59,8 +61,8 @@ class CardDisplay extends React.Component {
             2: [],
             3: [],
             4: [],
-          }
-        }
+          },
+        },
       })
     } else {
       this.setState({
@@ -72,8 +74,8 @@ class CardDisplay extends React.Component {
             3: [],
             4: [],
             5: [],
-          }
-        }
+          },
+        },
       })
     }
 
@@ -121,22 +123,22 @@ class CardDisplay extends React.Component {
       function handDeal() {
         addToHand(hand[0])
         addToHand(hand[1])
-        if (hand.length != 2) {
+        if (hand.length !== 2) {
           addToHand(hand[2])
         }
-        if (hand.length != 3) {
+        if (hand.length !== 3) {
           addToHand(hand[3])
         }
-        if (hand.length != 4) {
+        if (hand.length !== 4) {
           addToHand(hand[4])
         }
-        if (hand.length != 5) {
+        if (hand.length !== 5) {
           addToHand(hand[5])
         }
       }
       function riverDeal() {
-        let burn = []
-        let riverHand = []
+        const burn = []
+        const riverHand = []
         addToHand(burn)
         addToHand(riverHand)
         addToHand(riverHand)
@@ -169,6 +171,12 @@ class CardDisplay extends React.Component {
         <div><button className='button' onClick={this.handleClick}>close</button></div>
         <div><button className='button' onClick={this.handleClick2}>shuffle</button></div>
         <div><button className='button' onClick={this.handleClick3}>deal</button></div>
+        <div className='river'>
+          {River}
+        </div>
+        <div className='hand1'>
+          {Hand}
+        </div>
       </>
     )
   }
