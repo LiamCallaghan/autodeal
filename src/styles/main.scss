@@ -4,6 +4,18 @@
   flex-wrap: wrap;
 }
 
+.river {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.hand {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .card {
   margin: 10px 10px;
   border: 5px dotted white;
