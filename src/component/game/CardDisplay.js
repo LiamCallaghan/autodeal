@@ -8,6 +8,7 @@ import CardBacks from './CardBacks'
 class CardDisplay extends React.Component {
   state = {
     cards: [],
+    savedCards: [],
     river: [],
     players: {
       number: 5,
@@ -46,6 +47,7 @@ class CardDisplay extends React.Component {
     const response = deck()
     this.setState({
       cards: response,
+      savedCards: response,
     })
     // console.log(response)
   }
@@ -74,6 +76,7 @@ class CardDisplay extends React.Component {
     const response = shuffle(this.state.cards)
     this.setState({
       cards: response,
+      savedCards: response,
     })
   }
 
@@ -128,11 +131,12 @@ class CardDisplay extends React.Component {
     //   hand = [[], [], [], [], []]
     // }
     // console.log(hand)
-    function deal(deck) {
+    function deal(savedDeck) {
       let river = []
       function addToHand(addTo) {
-        addTo.push(deck[(deck.length - 1)])
-        deck.pop()
+        addTo.push(savedDeck[(savedDeck.length - 1)])
+        savedDeck.pop()
+        // console.log(this.cards)
       }
       function handDeal() {
         addToHand(hand[0])
@@ -166,14 +170,13 @@ class CardDisplay extends React.Component {
       riverDeal()
       return [river, hand[0], hand[1], hand[2], hand[3], hand[4]]
     }
-    const savedDeck = this.state.cards
-    const response = deal(this.state.cards)
-    // console.log(response)
+    const saved = []
+    saved.push(this.state.cards)
+    const response = deal(saved[0])
     // console.log(response[3])
 
     // {console.log(this.state.players.number)}
     this.setState({
-      cards: savedDeck,
       river: response[0],
       players: {
         number: handsNumber,
@@ -191,6 +194,7 @@ class CardDisplay extends React.Component {
   handleClick4 = async () => {
     let newNumber = this.state.players.number
     newNumber -= 1
+    console.log(newNumber)
 
     this.setState({
       players: {
@@ -204,7 +208,7 @@ class CardDisplay extends React.Component {
         },
       },
     })
-    console.log(this.state.players.number)
+    // console.log(this.state.players.number)
   }
 
   handleClick5 = async () => {
@@ -224,7 +228,39 @@ class CardDisplay extends React.Component {
         },
       },
     })
-    console.log(this.state.players.number)
+    // console.log(this.state.players.number)
+  }
+
+  handleClick6 = async () => {
+    const fullHand1 = []
+    const fullHand2 = []
+    const fullHand3 = []
+    const fullHand4 = []
+    const fullHand5 = []
+
+    function fullHand(riv, pers, full){
+      pers[ 5 ] = pers[ 0 ]
+      pers[ 6 ] = pers[ 1 ]
+      delete pers[ 0 ]
+      delete pers[ 1 ]
+      // console.log(newDeck)
+      // newDeck[1].push(pers)
+      // newDeck.push(newHand)
+      // full.push({ ...riv, ...pers })
+      full.push({ ...riv, ...pers })
+    }
+    fullHand(this.state.river, this.state.players.hands.one, fullHand1)
+    fullHand(this.state.river, this.state.players.hands.two, fullHand2)
+    if (this.state.players.number > 2) {
+      fullHand(this.state.river, this.state.players.hands.three, fullHand3)
+    }
+    if (this.state.players.number > 3) {
+      fullHand(this.state.river, this.state.players.hands.four, fullHand4)
+    }
+    if (this.state.players.number > 4) {
+      fullHand(this.state.river, this.state.players.hands.five, fullHand5)
+    }
+    console.log(fullHand1, fullHand2, fullHand3, fullHand4, fullHand5)
   }
 
   render() {
@@ -239,9 +275,11 @@ class CardDisplay extends React.Component {
         </div>
         <div><button className='button' onClick={this.handleClick}>close</button></div>
         <div><button className='button' onClick={this.handleClick2}>shuffle</button></div>
+        <div><h1>{this.state.players.number}</h1></div>
         <div><button className='button' onClick={this.handleClick4}>Number of players: Down</button></div>
         <div><button className='button' onClick={this.handleClick5}>Number of players: Up</button></div>
         <div><button className='button' onClick={this.handleClick3}>deal</button></div>
+        <div><button className='button' onClick={this.handleClick6}>solve</button></div>
         <div className='river'>
           {this.state.river.map(card => (<Cards key={card.id} {...card}/>))}
         </div>
