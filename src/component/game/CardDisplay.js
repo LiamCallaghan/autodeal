@@ -170,10 +170,10 @@ class CardDisplay extends React.Component {
       riverDeal()
       return [river, hand[0], hand[1], hand[2], hand[3], hand[4]]
     }
-    const saved = []
-    saved.push(this.state.cards)
-    const response = deal(saved[0])
-    // console.log(response[3])
+    const dance = []
+    dance.push({ ...this.state.cards })
+    console.log(dance)
+    const response = deal(dance)
 
     // {console.log(this.state.players.number)}
     this.setState({
