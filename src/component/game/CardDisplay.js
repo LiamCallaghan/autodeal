@@ -30,15 +30,15 @@ class CardDisplay extends React.Component {
       this.value = value
       this.suit = suit
     }
-    
+
     function deck() {
       const values = ['Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King']
       const suits = ['Clubs', 'Spades', 'Hearts', 'Diamonds']
       const cards = []
-    
+
       for (let i = 0; i < suits.length; i++) {
         for (let v = 0; v < values.length; v++) {
-          cards.push( new card( v + 1, values[v], suits[i]))
+          cards.push(new card(v + 1, values[v], suits[i]))
         }
       }
       return cards
@@ -69,7 +69,7 @@ class CardDisplay extends React.Component {
   handleClick2 = async () => {
     function shuffle(o) {
       for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x)
-        console.log(o)
+        console.log('shuffle step')
       return o
     }
 
@@ -170,10 +170,7 @@ class CardDisplay extends React.Component {
       riverDeal()
       return [river, hand[0], hand[1], hand[2], hand[3], hand[4]]
     }
-    const dance = []
-    dance.push({ ...this.state.cards })
-    console.log(dance)
-    const response = deal(dance)
+    const response = deal(this.state.cards)
 
     // {console.log(this.state.players.number)}
     this.setState({
@@ -232,17 +229,17 @@ class CardDisplay extends React.Component {
   }
 
   handleClick6 = async () => {
-    const fullHand1 = []
-    const fullHand2 = []
-    const fullHand3 = []
-    const fullHand4 = []
-    const fullHand5 = []
+    let fullHand1 = []
+    let fullHand2 = []
+    let fullHand3 = []
+    let fullHand4 = []
+    let fullHand5 = []
 
-    function fullHand(riv, pers, full){
-      pers[ 5 ] = pers[ 0 ]
-      pers[ 6 ] = pers[ 1 ]
-      delete pers[ 0 ]
-      delete pers[ 1 ]
+    function fullHand(riv, pers, full) {
+      pers[5] = pers[0]
+      pers[6] = pers[1]
+      delete pers[0]
+      delete pers[1]
       // console.log(newDeck)
       // newDeck[1].push(pers)
       // newDeck.push(newHand)
@@ -250,17 +247,37 @@ class CardDisplay extends React.Component {
       full.push({ ...riv, ...pers })
     }
     fullHand(this.state.river, this.state.players.hands.one, fullHand1)
+    fullHand1 = fullHand1[0]
     fullHand(this.state.river, this.state.players.hands.two, fullHand2)
+    fullHand2 = fullHand2[0]
     if (this.state.players.number > 2) {
       fullHand(this.state.river, this.state.players.hands.three, fullHand3)
+      fullHand3 = fullHand3[0]
     }
     if (this.state.players.number > 3) {
       fullHand(this.state.river, this.state.players.hands.four, fullHand4)
+      fullHand4 = fullHand4[0]
     }
     if (this.state.players.number > 4) {
       fullHand(this.state.river, this.state.players.hands.five, fullHand5)
+      fullHand5 = fullHand5[0]
     }
-    console.log(fullHand1, fullHand2, fullHand3, fullHand4, fullHand5)
+    // console.log(fullHand1, fullHand2, fullHand3, fullHand4, fullHand5)
+    function findAce(hand, name) {
+      if (Object.values(hand).includes('Ace')) {
+        console.log('ace in a hand ' + name)
+      }
+    }
+    Object.values(fullHand1).forEach(findAce, 1)
+    Object.values(fullHand2).forEach(findAce, 2)
+    Object.values(fullHand3).forEach(findAce, 3)
+    Object.values(fullHand4).forEach(findAce, 4)
+    Object.values(fullHand5).forEach(findAce, 5)
+    // console.log(Object.entries(fullHand1))
+    // findAce(fullHand2)
+    // findAce(fullHand3)
+    // findAce(fullHand4)
+    // findAce(fullHand5)
   }
 
   render() {
@@ -281,23 +298,23 @@ class CardDisplay extends React.Component {
         <div><button className='button' onClick={this.handleClick3}>deal</button></div>
         <div><button className='button' onClick={this.handleClick6}>solve</button></div>
         <div className='river'>
-          {this.state.river.map(card => (<Cards key={card.id} {...card}/>))}
+          {this.state.river.map(card => (<Cards key={card.id} {...card} />))}
         </div>
         <div className='hand'>
-          {this.state.players.hands.one.map(card => (<Cards key={card.id} {...card}/>))}
+          {this.state.players.hands.one.map(card => (<Cards key={card.id} {...card} />))}
         </div>
         <div className='hand'>
-          {this.state.players.hands.two.map(card => (<Cards key={card.id} {...card}/>))}
+          {this.state.players.hands.two.map(card => (<Cards key={card.id} {...card} />))}
         </div>
         <div className='hand'>
-          {this.state.players.number > 2 ? this.state.players.hands.three.map(card => (<Cards key={card.id} {...card}/>)) : 'Not playing'}
+          {this.state.players.number > 2 ? this.state.players.hands.three.map(card => (<Cards key={card.id} {...card} />)) : 'Not playing'}
           {/* {console.log(this.state.players.number)} */}
         </div>
         <div className='hand'>
-          {this.state.players.number > 3 ? this.state.players.hands.four.map(card => (<Cards key={card.id} {...card}/>)) : 'Not playing'}
+          {this.state.players.number > 3 ? this.state.players.hands.four.map(card => (<Cards key={card.id} {...card} />)) : 'Not playing'}
         </div>
         <div className='hand'>
-          {this.state.players.number > 4 ? this.state.players.hands.five.map(card => (<Cards key={card.id} {...card}/>)) : 'Not playing'}
+          {this.state.players.number > 4 ? this.state.players.hands.five.map(card => (<Cards key={card.id} {...card} />)) : 'Not playing'}
         </div>
       </>
     )
