@@ -247,37 +247,110 @@ class CardDisplay extends React.Component {
       full.push({ ...riv, ...pers })
     }
     fullHand(this.state.river, this.state.players.hands.one, fullHand1)
-    fullHand1 = fullHand1[0]
+    fullHand1 = Object.values(fullHand1[0])
     fullHand(this.state.river, this.state.players.hands.two, fullHand2)
-    fullHand2 = fullHand2[0]
+    fullHand2 = Object.values(fullHand2[0])
     if (this.state.players.number > 2) {
       fullHand(this.state.river, this.state.players.hands.three, fullHand3)
-      fullHand3 = fullHand3[0]
+      fullHand3 = Object.values(fullHand3[0])
     }
     if (this.state.players.number > 3) {
       fullHand(this.state.river, this.state.players.hands.four, fullHand4)
-      fullHand4 = fullHand4[0]
+      fullHand4 = Object.values(fullHand4[0])
     }
     if (this.state.players.number > 4) {
       fullHand(this.state.river, this.state.players.hands.five, fullHand5)
-      fullHand5 = fullHand5[0]
+      fullHand5 = Object.values(fullHand5[0])
     }
     // console.log(fullHand1, fullHand2, fullHand3, fullHand4, fullHand5)
-    function findAce(hand, name) {
+    let spadesCount = 0
+    let clubsCount = 0
+    let diamondsCount = 0
+    let heartsCount = 0
+    function flat() {
+      spadesCount = 0
+      clubsCount = 0
+      diamondsCount = 0
+      heartsCount = 0
+    }
+    function findResult(hand) {
+      // console.log(Object.values(hand))
+      function flushTest(count) {
+        if (Object.values(count).includes('Spades')) {
+          spadesCount += 1
+        }
+        if (Object.values(count).includes('Clubs')) {
+          clubsCount += 1
+        }
+        if (Object.values(count).includes('Diamonds')) {
+          diamondsCount += 1
+        }
+        if (Object.values(count).includes('Hearts')) {
+          heartsCount += 1
+        }
+      }
+      flushTest(hand)
       if (Object.values(hand).includes('Ace')) {
-        console.log('ace in a hand ' + name)
+        console.log('ace in hand')
       }
     }
-    Object.values(fullHand1).forEach(findAce, 1)
-    Object.values(fullHand2).forEach(findAce, 2)
-    Object.values(fullHand3).forEach(findAce, 3)
-    Object.values(fullHand4).forEach(findAce, 4)
-    Object.values(fullHand5).forEach(findAce, 5)
-    // console.log(Object.entries(fullHand1))
-    // findAce(fullHand2)
-    // findAce(fullHand3)
-    // findAce(fullHand4)
-    // findAce(fullHand5)
+    function test1(card){
+      // console.log('here')
+      fullHand1.forEach(function(C){
+        // console.log(C.number)
+        // console.log(card.number + 1)
+        if (C.number === card.number + 1) {
+          console.log('straight potential')
+          fullHand1.forEach(function(C){
+            if (C.number === card.number + 2) {
+              console.log('straight potential 2')
+              fullHand1.forEach(function(C){
+                if (C.number === card.number + 3) {
+                  console.log('straight potential 3')
+                  fullHand1.forEach(function(C){
+                    if (C.number === card.number + 4) {
+                      console.log('straight potential 4')
+                      fullHand1.forEach(function(C){
+                        if (C.number === card.number + 5) {
+                          console.log('straight potential 5')
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+    fullHand1.forEach(test1)
+
+    console.log('checking first hand')
+    Object.values(fullHand1).forEach(findResult)
+    console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
+    flat()
+    console.log('checking second hand')
+    Object.values(fullHand2).forEach(findResult)
+    console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
+    flat()
+    console.log('checking third hand')
+    Object.values(fullHand3).forEach(findResult)
+    console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
+    flat()
+    console.log('checking fourth hand')
+    Object.values(fullHand4).forEach(findResult)
+    console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
+    flat()
+    console.log('checking fifth hand')
+    Object.values(fullHand5).forEach(findResult)
+    console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
+    flat()
+    // findAce(Object.values(fullHand1)[1], '1')
+    // findAce(Object.values(fullHand2)[1], '2')
+    // findAce(Object.values(fullHand3)[1], '3')
+    // findAce(Object.values(fullHand4)[1], '4')
+    // findAce(Object.values(fullHand5)[1], '5')
   }
 
   render() {
