@@ -267,11 +267,13 @@ class CardDisplay extends React.Component {
     let clubsCount = 0
     let diamondsCount = 0
     let heartsCount = 0
+    let straightCount = 0
     function flat() {
       spadesCount = 0
       clubsCount = 0
       diamondsCount = 0
       heartsCount = 0
+      straightCount = 0
     }
     function findResult(hand) {
       // console.log(Object.values(hand))
@@ -295,24 +297,17 @@ class CardDisplay extends React.Component {
       }
     }
     function test1(card){
-      // console.log('here')
       fullHand1.forEach(function(C){
-        // console.log(C.number)
-        // console.log(card.number + 1)
         if (C.number === card.number + 1) {
-          console.log('straight potential')
           fullHand1.forEach(function(C){
             if (C.number === card.number + 2) {
-              console.log('straight potential 2')
               fullHand1.forEach(function(C){
                 if (C.number === card.number + 3) {
-                  console.log('straight potential 3')
                   fullHand1.forEach(function(C){
                     if (C.number === card.number + 4) {
-                      console.log('straight potential 4')
                       fullHand1.forEach(function(C){
                         if (C.number === card.number + 5) {
-                          console.log('straight potential 5')
+                          console.log(straightCount + 1)
                         }
                       })
                     }
@@ -324,27 +319,243 @@ class CardDisplay extends React.Component {
         }
       })
     }
-    fullHand1.forEach(test1)
+    function straightDown1(card){
+      fullHand1.forEach(function(C){
+        if (C.number === card.number - 1) {
+          fullHand1.forEach(function(C){
+            if (C.number === card.number - 2) {
+              fullHand1.forEach(function(C){
+                if (C.number === card.number - 3) {
+                  fullHand1.forEach(function(C){
+                    if (C.number === card.number - 4) {
+                      fullHand1.forEach(function(C){
+                        if (C.number === card.number - 5) {
+                          console.log(straightCount + 1)
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+    function test2(card){
+      fullHand2.forEach(function(C){
+        if (C.number === card.number + 1) {
+          fullHand2.forEach(function(C){
+            if (C.number === card.number + 2) {
+              fullHand2.forEach(function(C){
+                if (C.number === card.number + 3) {
+                  fullHand2.forEach(function(C){
+                    if (C.number === card.number + 4) {
+                      fullHand2.forEach(function(C){
+                        if (C.number === card.number + 5) {
+                          console.log(straightCount + 1)
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+    function straightDown2(card){
+      fullHand2.forEach(function(C){
+        if (C.number === card.number - 1) {
+          fullHand2.forEach(function(C){
+            if (C.number === card.number - 2) {
+              fullHand2.forEach(function(C){
+                if (C.number === card.number - 3) {
+                  fullHand2.forEach(function(C){
+                    if (C.number === card.number - 4) {
+                      fullHand2.forEach(function(C){
+                        if (C.number === card.number - 5) {
+                          console.log(straightCount + 1)
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+    function test3(card){
+      fullHand3.forEach(function(C){
+        if (C.number === card.number + 1) {
+          fullHand3.forEach(function(C){
+            if (C.number === card.number + 2) {
+              fullHand3.forEach(function(C){
+                if (C.number === card.number + 3) {
+                  fullHand3.forEach(function(C){
+                    if (C.number === card.number + 4) {
+                      fullHand3.forEach(function(C){
+                        if (C.number === card.number + 5) {
+                          console.log(straightCount + 1)
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+    function straightDown3(card){
+      fullHand3.forEach(function(C){
+        if (C.number === card.number - 1) {
+          fullHand3.forEach(function(C){
+            if (C.number === card.number - 2) {
+              fullHand3.forEach(function(C){
+                if (C.number === card.number - 3) {
+                  fullHand3.forEach(function(C){
+                    if (C.number === card.number - 4) {
+                      fullHand3.forEach(function(C){
+                        if (C.number === card.number - 5) {
+                          console.log(straightCount + 1)
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+    function test4(card){
+      fullHand4.forEach(function(C){
+        if (C.number === card.number + 1) {
+          fullHand4.forEach(function(C){
+            if (C.number === card.number + 2) {
+              fullHand4.forEach(function(C){
+                if (C.number === card.number + 3) {
+                  fullHand4.forEach(function(C){
+                    if (C.number === card.number + 4) {
+                      fullHand4.forEach(function(C){
+                        if (C.number === card.number + 5) {
+                          console.log(straightCount + 1)
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+    function straightDown4(card){
+      fullHand4.forEach(function(C){
+        if (C.number === card.number - 1) {
+          fullHand4.forEach(function(C){
+            if (C.number === card.number - 2) {
+              fullHand4.forEach(function(C){
+                if (C.number === card.number - 3) {
+                  fullHand4.forEach(function(C){
+                    if (C.number === card.number - 4) {
+                      fullHand4.forEach(function(C){
+                        if (C.number === card.number - 5) {
+                          console.log(straightCount + 1)
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+    function test5(card){
+      fullHand5.forEach(function(C){
+        if (C.number === card.number + 1) {
+          fullHand5.forEach(function(C){
+            if (C.number === card.number + 2) {
+              fullHand5.forEach(function(C){
+                if (C.number === card.number + 3) {
+                  fullHand5.forEach(function(C){
+                    if (C.number === card.number + 4) {
+                      fullHand5.forEach(function(C){
+                        if (C.number === card.number + 5) {
+                          console.log(straightCount + 1)
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+    function straightDown5(card){
+      fullHand5.forEach(function(C){
+        if (C.number === card.number - 1) {
+          fullHand5.forEach(function(C){
+            if (C.number === card.number - 2) {
+              fullHand5.forEach(function(C){
+                if (C.number === card.number - 3) {
+                  fullHand5.forEach(function(C){
+                    if (C.number === card.number - 4) {
+                      fullHand5.forEach(function(C){
+                        if (C.number === card.number - 5) {
+                          console.log(straightCount + 1)
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
 
     console.log('checking first hand')
     Object.values(fullHand1).forEach(findResult)
     console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
+    fullHand1.forEach(test1)
+    fullHand1.forEach(straightDown1)
     flat()
     console.log('checking second hand')
     Object.values(fullHand2).forEach(findResult)
     console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
+    fullHand2.forEach(test2)
+    fullHand2.forEach(straightDown2)
     flat()
     console.log('checking third hand')
     Object.values(fullHand3).forEach(findResult)
     console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
+    fullHand3.forEach(test3)
+    fullHand3.forEach(straightDown3)
     flat()
     console.log('checking fourth hand')
     Object.values(fullHand4).forEach(findResult)
     console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
+    fullHand4.forEach(test4)
+    fullHand4.forEach(straightDown4)
     flat()
     console.log('checking fifth hand')
     Object.values(fullHand5).forEach(findResult)
     console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
+    fullHand5.forEach(test5)
+    fullHand5.forEach(straightDown5)
     flat()
     // findAce(Object.values(fullHand1)[1], '1')
     // findAce(Object.values(fullHand2)[1], '2')
