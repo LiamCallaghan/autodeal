@@ -342,6 +342,29 @@ class CardDisplay extends React.Component {
         }
       })
     }
+    // function pairsTest1(card){
+    //   fullHand1.forEach(function(C){
+    //     if (C.number === card.number) {
+    //       fullHand1.forEach(function(C){
+    //         if (C.number === card.number) {
+    //           fullHand1.forEach(function(C){
+    //             if (C.number === card.number) {
+    //               fullHand1.forEach(function(C){
+    //                 if (C.number === card.number) {
+    //                   fullHand1.forEach(function(C){
+    //                     if (C.number === card.number) {
+    //                       console.log('Pair')
+    //                     }
+    //                   })
+    //                 }
+    //               })
+    //             }
+    //           })
+    //         }
+    //       })
+    //     }
+    //   })
+    // }
     function test2(card){
       fullHand2.forEach(function(C){
         if (C.number === card.number + 1) {
