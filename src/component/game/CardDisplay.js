@@ -342,29 +342,25 @@ class CardDisplay extends React.Component {
         }
       })
     }
-    // function pairsTest1(card){
-    //   fullHand1.forEach(function(C){
-    //     if (C.number === card.number) {
-    //       fullHand1.forEach(function(C){
-    //         if (C.number === card.number) {
-    //           fullHand1.forEach(function(C){
-    //             if (C.number === card.number) {
-    //               fullHand1.forEach(function(C){
-    //                 if (C.number === card.number) {
-    //                   fullHand1.forEach(function(C){
-    //                     if (C.number === card.number) {
-    //                       console.log('Pair')
-    //                     }
-    //                   })
-    //                 }
-    //               })
-    //             }
-    //           })
-    //         }
-    //       })
-    //     }
-    //   })
-    // }
+    function pairsTest1(card){
+      fullHand1.forEach(function(C){
+        if (C.number === card.number && C.suit !== card.suit) {
+          const D = C.suit
+          console.log('Pair in hand')
+          fullHand1.forEach(function(C){
+            if (C.number === card.number && C.suit !== card.suit && C.suit !== D) {
+              const E = C.suit
+              console.log('Three of a kind in hand')
+              fullHand1.forEach(function(C){
+                if (C.number === card.number && C.suit !== card.suit && C.suit !== D && C.suit !== E) {
+                  console.log('Four of a kind in hand')
+                }
+              })
+            }
+          })
+        }
+      })
+    }
     function test2(card){
       fullHand2.forEach(function(C){
         if (C.number === card.number + 1) {
@@ -404,6 +400,25 @@ class CardDisplay extends React.Component {
                       })
                     }
                   })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+    function pairsTest2(card){
+      fullHand2.forEach(function(C){
+        if (C.number === card.number && C.suit !== card.suit) {
+          const D = C.suit
+          console.log('Pair in hand')
+          fullHand2.forEach(function(C){
+            if (C.number === card.number && C.suit !== card.suit && C.suit !== D) {
+              const E = C.suit
+              console.log('Three of a kind in hand')
+              fullHand2.forEach(function(C){
+                if (C.number === card.number && C.suit !== card.suit && C.suit !== D && C.suit !== E) {
+                  console.log('Four of a kind in hand')
                 }
               })
             }
@@ -457,6 +472,25 @@ class CardDisplay extends React.Component {
         }
       })
     }
+    function pairsTest3(card){
+      fullHand3.forEach(function(C){
+        if (C.number === card.number && C.suit !== card.suit) {
+          const D = C.suit
+          console.log('Pair in hand')
+          fullHand3.forEach(function(C){
+            if (C.number === card.number && C.suit !== card.suit && C.suit !== D) {
+              const E = C.suit
+              console.log('Three of a kind in hand')
+              fullHand3.forEach(function(C){
+                if (C.number === card.number && C.suit !== card.suit && C.suit !== D && C.suit !== E) {
+                  console.log('Four of a kind in hand')
+                }
+              })
+            }
+          })
+        }
+      })
+    }
     function test4(card){
       fullHand4.forEach(function(C){
         if (C.number === card.number + 1) {
@@ -496,6 +530,25 @@ class CardDisplay extends React.Component {
                       })
                     }
                   })
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+    function pairsTest4(card){
+      fullHand4.forEach(function(C){
+        if (C.number === card.number && C.suit !== card.suit) {
+          const D = C.suit
+          console.log('Pair in hand')
+          fullHand4.forEach(function(C){
+            if (C.number === card.number && C.suit !== card.suit && C.suit !== D) {
+              const E = C.suit
+              console.log('Three of a kind in hand')
+              fullHand4.forEach(function(C){
+                if (C.number === card.number && C.suit !== card.suit && C.suit !== D && C.suit !== E) {
+                  console.log('Four of a kind in hand')
                 }
               })
             }
@@ -549,36 +602,60 @@ class CardDisplay extends React.Component {
         }
       })
     }
+    function pairsTest5(card){
+      fullHand5.forEach(function(C){
+        if (C.number === card.number && C.suit !== card.suit) {
+          const D = C.suit
+          console.log('Pair in hand')
+          fullHand5.forEach(function(C){
+            if (C.number === card.number && C.suit !== card.suit && C.suit !== D) {
+              const E = C.suit
+              console.log('Three of a kind in hand')
+              fullHand5.forEach(function(C){
+                if (C.number === card.number && C.suit !== card.suit && C.suit !== D && C.suit !== E) {
+                  console.log('Four of a kind in hand')
+                }
+              })
+            }
+          })
+        }
+      })
+    }
 
     console.log('checking first hand')
     Object.values(fullHand1).forEach(findResult)
     console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
     fullHand1.forEach(test1)
     fullHand1.forEach(straightDown1)
+    fullHand1.forEach(pairsTest1)
     flat()
     console.log('checking second hand')
     Object.values(fullHand2).forEach(findResult)
     console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
     fullHand2.forEach(test2)
     fullHand2.forEach(straightDown2)
+    fullHand2.forEach(pairsTest2)
     flat()
     console.log('checking third hand')
     Object.values(fullHand3).forEach(findResult)
     console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
     fullHand3.forEach(test3)
     fullHand3.forEach(straightDown3)
+    fullHand3.forEach(pairsTest3)
     flat()
     console.log('checking fourth hand')
     Object.values(fullHand4).forEach(findResult)
     console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
     fullHand4.forEach(test4)
     fullHand4.forEach(straightDown4)
+    fullHand4.forEach(pairsTest4)
     flat()
     console.log('checking fifth hand')
     Object.values(fullHand5).forEach(findResult)
     console.log('Spades: ' + spadesCount, 'Clubs: ' + clubsCount, 'Diamonds: ' + diamondsCount,'Hearts: ' + heartsCount)
     fullHand5.forEach(test5)
     fullHand5.forEach(straightDown5)
+    fullHand5.forEach(pairsTest5)
     flat()
     // findAce(Object.values(fullHand1)[1], '1')
     // findAce(Object.values(fullHand2)[1], '2')
