@@ -268,12 +268,18 @@ class CardDisplay extends React.Component {
     let diamondsCount = 0
     let heartsCount = 0
     let straightCount = 0
+    let pairCount = 0
+    let threeCount = 0
+    let fourCount = 0
     function flat() {
       spadesCount = 0
       clubsCount = 0
       diamondsCount = 0
       heartsCount = 0
       straightCount = 0
+      pairCount = 0
+      threeCount = 0
+      fourCount = 0
     }
     function findResult(hand) {
       // console.log(Object.values(hand))
@@ -347,13 +353,16 @@ class CardDisplay extends React.Component {
         if (C.number === card.number && C.suit !== card.suit) {
           const D = C.suit
           console.log('Pair in hand')
+          pairCount += 1
           fullHand1.forEach(function(C){
             if (C.number === card.number && C.suit !== card.suit && C.suit !== D) {
               const E = C.suit
               console.log('Three of a kind in hand')
+              threeCount += 1
               fullHand1.forEach(function(C){
                 if (C.number === card.number && C.suit !== card.suit && C.suit !== D && C.suit !== E) {
                   console.log('Four of a kind in hand')
+                  fourCount += 1
                 }
               })
             }
@@ -628,6 +637,7 @@ class CardDisplay extends React.Component {
     fullHand1.forEach(test1)
     fullHand1.forEach(straightDown1)
     fullHand1.forEach(pairsTest1)
+    console.log((threeCount < 1 || fourCount < 1) ? (`pairs: ${pairCount}`) : null)
     flat()
     console.log('checking second hand')
     Object.values(fullHand2).forEach(findResult)
